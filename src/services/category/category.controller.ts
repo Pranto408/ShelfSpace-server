@@ -42,7 +42,7 @@ const getCategoryById = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await CategoryService.getCategoryById(req.params.id);
+    const result = await CategoryService.getCategoryById((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Category fetched successfully",
@@ -60,7 +60,7 @@ const updateCategory = async (
 ) => {
   try {
     const result = await CategoryService.updateCategory(
-      req.params.id,
+      (req.params.id as string),
       req.body,
     );
     sendResponse(res, 200, {
@@ -79,7 +79,7 @@ const deleteCategory = async (
   next: NextFunction,
 ) => {
   try {
-    await CategoryService.deleteCategory(req.params.id);
+    await CategoryService.deleteCategory((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Category deleted successfully",

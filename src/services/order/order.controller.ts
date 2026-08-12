@@ -38,7 +38,7 @@ const getOrderById = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await OrderService.getOrderById(req.params.id);
+    const result = await OrderService.getOrderById((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Order fetched successfully",
@@ -56,7 +56,7 @@ const updateOrderStatus = async (
 ) => {
   try {
     const result = await OrderService.updateOrderStatus(
-      req.params.id,
+      (req.params.id as string),
       req.body.status,
     );
     sendResponse(res, 200, {
@@ -71,7 +71,7 @@ const updateOrderStatus = async (
 
 const deleteOrder = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await OrderService.deleteOrder(req.params.id);
+    await OrderService.deleteOrder((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Order deleted successfully",

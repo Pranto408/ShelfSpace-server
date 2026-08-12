@@ -42,7 +42,7 @@ const getProductById = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await ProductService.getProductById(req.params.id);
+    const result = await ProductService.getProductById((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Product fetched successfully",
@@ -59,7 +59,7 @@ const updateProduct = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await ProductService.updateProduct(req.params.id, req.body);
+    const result = await ProductService.updateProduct((req.params.id as string), req.body);
     sendResponse(res, 200, {
       success: true,
       message: "Product updated successfully",
@@ -76,7 +76,7 @@ const deleteProduct = async (
   next: NextFunction,
 ) => {
   try {
-    await ProductService.deleteProduct(req.params.id);
+    await ProductService.deleteProduct((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Product deleted successfully",

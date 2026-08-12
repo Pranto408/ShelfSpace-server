@@ -45,7 +45,7 @@ const getReviewById = async (
   next: NextFunction,
 ) => {
   try {
-    const result = await ReviewService.getReviewById(req.params.id);
+    const result = await ReviewService.getReviewById((req.params.id as string));
     sendResponse(res, 200, {
       success: true,
       message: "Review fetched successfully",
@@ -63,7 +63,7 @@ const updateReview = async (
 ) => {
   try {
     const result = await ReviewService.updateReview(
-      req.params.id,
+      (req.params.id as string),
       req.user!.id,
       req.body,
     );
@@ -84,7 +84,7 @@ const deleteReview = async (
 ) => {
   try {
     await ReviewService.deleteReview(
-      req.params.id,
+      (req.params.id as string),
       req.user!.id,
       req.user!.role,
     );
