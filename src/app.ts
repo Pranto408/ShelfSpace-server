@@ -6,7 +6,11 @@ import AppError from "./lib/AppError";
 const app: Application = express();
 
 // ---------- Global Middleware ----------
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://shelf-space-client.vercel.app"],
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
